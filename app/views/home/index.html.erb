@@ -1,20 +1,46 @@
-<class ="container">
+<div class="container">
+  <h1>아이디 : <%=current_user.email %></h1>
+</div>
+
+<div class="container" style="leftmargin:0;">
+  <a href="/home/index" <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Main
+</button></a>
+</div>
+<div class ="container">
+  <table class="table table-striped">
+    <tr>
+      <th>★목록★</th>
+    </tr>
     <% @posts.each do |o| %>
-        <p><a href="/home/read/<%=o.id%>">제목 : <%=o.title%></a></p>
+        <tr>
+          <th>
+            <p>글쓴이 : <%=o.user.email %><p>
+            <a href="/home/read/<%=o.id%>"><%=o.title%></a>
+          </th>
+        </tr>
     <% end %>
 
+  </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
-    <a href="/home/create"> 새 글쓰기</a>
-
-<table>
-  <caption><span><게시판></게시판></span></caption>
-  <tr class="aa">
-    <th><span>번호</span></th>
-    <th><span>제목</span></th>
-    <th><span>내용</span></th>
-    <th><span>시간</span></th>
-
-  </tr>
-
-
+  <a href="/home/create"><button type="button" class="btn btn-success">새 글쓰기</button></a>
 </div>

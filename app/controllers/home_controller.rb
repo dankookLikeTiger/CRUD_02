@@ -1,16 +1,27 @@
 class HomeController < ApplicationController
    def index
+     if user_signed_in?
     @posts = Post.all
+     else
+       redirect_to '/users/sign_in'
+   end
    end
 
   def create
   end
   
   def new
+
     @post = Post.create(
       title:params[:satang],
       content:params[:kimbab])
+    @post.user = current_user
+
+    if @post.save
     redirect_to "/home/index"
+    else
+      render :text => @post.errors.messages[:title].first
+    end
   end
   
   def read

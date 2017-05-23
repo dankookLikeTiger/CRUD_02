@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'devise'
 gem 'faker'
 gem 'pry'
 gem 'rails_db'
